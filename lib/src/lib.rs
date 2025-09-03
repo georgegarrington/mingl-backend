@@ -16,7 +16,7 @@ pub async fn run() -> Result<(), Box<dyn std::error::Error>> {
 
     let route = Route::new().at("/", get(graphiql).post(GraphQL::new(schema)));
 
-    Server::new(TcpListener::bind("127.0.0.1:8003"))
+    Server::new(TcpListener::bind("0.0.0.0:8003"))
         .run(route)
         .await?;
 

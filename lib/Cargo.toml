@@ -9,3 +9,4 @@ async-graphql-poem = "*"
 tokio = { version = "1", features = ["full"] }
 poem = "*"
 itertools = "*"
+chrono = "*"
