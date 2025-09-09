@@ -1,3 +1,3 @@
 fn main() {
-    lib::run();
+    lib::run().unwrap();
 }

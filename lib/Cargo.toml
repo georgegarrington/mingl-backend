@@ -14,6 +14,8 @@ sqlx = { version = "0.8", features = [
     "runtime-tokio",
     "tls-native-tls",
     "postgres",
+    "uuid",
 ] }
+uuid = { version = "*" }
 # TODO: sqlx sadly depends on 0.8 and tungstenite depednds on 0.9 I think
 rand = { version = "0.9" }

@@ -17,23 +17,24 @@ async fn graphiql() -> impl IntoResponse {
 pub async fn run() -> Result<(), Box<dyn std::error::Error>> {
     // let conn = sqlx::Connection::connect("").await;
 
-    println!("CREATING POOL...");
+    // println!("CREATING POOL...");
 
     let pool = PgPoolOptions::new()
         .max_connections(5)
+        // TODO: do NOT use hardcoded secrets!
         .connect("postgresql://postgres:YJNhvX4pf9VjNu4f@db.zuejypwiozqqmmwvtsza.supabase.co:5432/postgres")
         .await.unwrap();
 
-    println!("FETCHING...");
+    // println!("FETCHING...");
 
-    let (email, username): (String, String) =
-        sqlx::query_as("SELECT email, username FROM mingl_io.users")
-            .fetch_one(&pool)
-            .await
-            .unwrap();
+    // let (email, username): (String, String) =
+    //     sqlx::query_as("SELECT email, username FROM mingl_io.users")
+    //         .fetch_one(&pool)
+    //         .await
+    //         .unwrap();
 
-    println!("EMAIL: {email}");
-    println!("UNAME: {username}");
+    // println!("EMAIL: {email}");
+    // println!("UNAME: {username}");
 
     let schema = async_graphql::Schema::build(Query, Mutation, EmptySubscription)
         .data(pool)
