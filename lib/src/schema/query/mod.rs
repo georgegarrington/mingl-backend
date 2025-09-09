@@ -1,4 +1,5 @@
 use sqlx::{Pool, Postgres};
+use uuid::Uuid;
 
 pub struct Query;
 
@@ -24,7 +25,7 @@ impl Query {
     ) -> async_graphql::Result<LoginDetails> {
         let pool = ctx.data::<Pool<Postgres>>()?;
 
-        let (user_id, username): (sqlx::types::Uuid, String) = sqlx::query_as(
+        let (user_id, username): (Uuid, String) = sqlx::query_as(
             "
             SELECT id, username FROM mingl_io.users
             WHERE 
